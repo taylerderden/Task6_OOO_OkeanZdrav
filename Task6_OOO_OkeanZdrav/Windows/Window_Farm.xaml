@@ -17,7 +17,7 @@
         <ComboBox Margin="10" Name="Sort" SelectionChanged="SortChange" FontSize="8"/>
             <ComboBox Margin="10" Name="FiltrOtpusk" SelectedItem="{Binding Type}" DisplayMemberPath="TypeName" SelectionChanged="FiltrTypeChange" FontSize="8"/>
             <ComboBox Margin="10" Name="FiltrPostav" SelectedItem="{Binding Supplier}" DisplayMemberPath="SupplierName" SelectionChanged="FiltrSupplierChange" FontSize="8"/>
-            <ComboBox Margin="10" Name="FiltrAnalog" SelectedItem="{Binding Medicament}" DisplayMemberPath="MedicamentAnalog" SelectionChanged="FiltrMedicamentChange" FontSize="8"/>
+            <ComboBox Margin="10" Name="FiltrAnalog" SelectionChanged="FiltrMedicamentChange" FontSize="8"/>
         </UniformGrid>
     <ListView Name="ListViewMed" Grid.Row="1">
         <ListView.ItemTemplate>

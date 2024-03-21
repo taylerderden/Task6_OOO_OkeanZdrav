@@ -32,21 +32,14 @@ namespace Task6_OOO_OkeanZdrav.Windows
         private void Button_SaveClick(object sender, RoutedEventArgs e)
         {
             if (tbFam.Text != "" && tbName.Text != "" && tbSurname.Text != "" && tbPhone.Text != "" && tbEmail.Text != "" && tbDiscont.Text != "")
-            {
-                if (client.IdClients == 0)
-                {
-                    CoreModel.init().Clients.Add(client);
-                }
-
-                else
-                {
-                    MessageBox.Show("Запись добавлена");
-
-                    Window_Farm windowFarm = new Window_Farm();
-                    windowFarm.Show();
-                    Hide();
-                }
-
+            {               
+                CoreModel.init().Clients.Add(client);
+                CoreModel.init().SaveChanges();
+                MessageBox.Show("Запись добавлена");
+                           
+                Window_Farm windowFarm = new Window_Farm();
+                windowFarm.Show();
+                Hide();               
             }
             else
                 MessageBox.Show("Заполните все поля!");

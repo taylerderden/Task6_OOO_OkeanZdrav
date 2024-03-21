@@ -6,6 +6,20 @@
         xmlns:local="clr-namespace:Task6_OOO_OkeanZdrav.Windows"
         mc:Ignorable="d"
         Title="Window_Admin" Height="450" Width="800">
+
+    <Window.Resources>
+        <Style TargetType="ListViewItem">
+            <Style.Setters>
+                <Setter Property="Background" Value="White" />
+            </Style.Setters>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsBolshMenshe}" Value="True">
+                    <Setter Property="ListViewItem.Background" Value="Gray" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid Style="{StaticResource gridBackground}">
         <Grid.RowDefinitions>
             <RowDefinition Height="37*"/>
@@ -56,7 +70,7 @@
                                 <TextBlock Text="Цена: " FontSize="20">
                                     <Run Text="{Binding MedicamentCost}"/>
                                 </TextBlock>
-                                <TextBlock Text="Количество: " FontSize="20">
+                                <TextBlock x:Name="tbCount" Text="Количество: " FontSize="20">
                                     <Run Text="{Binding MedicamentCount}"/>
                                 </TextBlock>
                                 <TextBlock Text="Отпуск:" FontSize="20">

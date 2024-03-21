@@ -16,21 +16,17 @@
             <ColumnDefinition Width="281*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="1" Margin="20,20,20,38">
-            <TextBox x:Name="cbFam" Height="50"/>
-            <TextBox x:Name="tbName" Height="50"/>
-            <TextBox x:Name="tbSurname" Height="50"/>
-            <TextBox x:Name="tbPhone" Height="50"/>
-            <TextBox x:Name="cbEmail" Height="50"/>
-            <TextBox x:Name="tbDiscont" Height="50"/>
+            <TextBox x:Name="tbMedicament" Height="50"/>
+            <TextBox x:Name="tbCount" Height="50" Text="{Binding PurchaseCount}"/>
+            <ComboBox x:Name="cbClient" Height="50" SelectedItem="{Binding ClientsIdClientsNavigation}" DisplayMemberPath="ClientPhone" IsTextSearchEnabled="True" IsEditable="True" SelectionChanged="cbClient_SelectionChanged"/>
+            <TextBox x:Name="tbRecipe" Height="50" Text="{Binding RecipeIdRecipe}"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Center" Height="296">
-            <TextBlock Style="{StaticResource normalText}" Text="Фамилия" Height="50"  FontSize="25"/>
-            <TextBlock Style="{StaticResource normalText}" Text="Имя"  Height="50" FontSize="25"/>
-            <TextBlock Style="{StaticResource normalText}" Text="Отчество" Height="50" FontSize="25"/>
-            <TextBlock Style="{StaticResource normalText}" Text="Телефон" Height="50" FontSize="25"/>
-            <TextBlock Style="{StaticResource normalText}" Text="Почта" Height="50" FontSize="25"/>
-            <TextBlock Style="{StaticResource normalText}" Text="Размер скидки" Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Препарат" Height="50"  FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Кол-во"  Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Клиент" Height="50" FontSize="25"/>
+            <TextBlock Style="{StaticResource normalText}" Text="Рецепт" Height="50" FontSize="25"/>
         </StackPanel>
 
         <Button Style="{StaticResource button}" Grid.Row="1" Grid.Column="1" Content="Save" Click="Button_SaveClick" Margin="156,10,156,27"/>

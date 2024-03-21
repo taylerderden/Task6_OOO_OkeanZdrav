@@ -26,9 +26,9 @@ namespace Task6_OOO_OkeanZdrav.Windows
         {
             InitializeComponent();
             IEnumerable<Purchase> purchase = CoreModel.init().Purchases
-                .Include(p => p.MedicamentIdMedicament)
-                .Include(p => p.ClientsIdClients)
-                .Include(p => p.RecipeIdRecipe);
+                .Include(p => p.MedicamentIdMedicamentNavigation)
+                .Include(p => p.ClientsIdClientsNavigation)
+                .Include(p => p.RecipeIdRecipeNavigation);
             ListViewZak.ItemsSource = purchase.ToList();
         }
     }

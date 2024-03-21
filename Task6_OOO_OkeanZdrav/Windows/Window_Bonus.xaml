@@ -16,12 +16,12 @@
         <ColumnDefinition Width="281*"/>
     </Grid.ColumnDefinitions>
     <StackPanel Grid.Column="1" Margin="20,20,20,38">
-            <TextBox x:Name="tbFam" Height="50" />
-            <TextBox x:Name="tbName" Height="50"/>
-            <TextBox x:Name="tbSurname" Height="50"/>
-            <TextBox x:Name="tbPhone" Height="50"/>
-            <TextBox x:Name="tbEmail" Height="50"/>
-            <TextBox x:Name="tbDiscont" Height="50"/>
+            <TextBox x:Name="tbFam" Height="50" Text="{Binding ClientSurname}"/>
+            <TextBox x:Name="tbName" Height="50" Text="{Binding ClientName}"/>
+            <TextBox x:Name="tbSurname" Height="50" Text="{Binding ClientMiddlename}"/>
+            <TextBox x:Name="tbPhone" Height="50" Text="{Binding ClientPhone}"/>
+            <TextBox x:Name="tbEmail" Height="50" Text="{Binding ClientEmail}"/>
+            <TextBox x:Name="tbDiscont" Height="50" Text="{Binding ClientDiscountPercent}"/>
     </StackPanel>
 
     <StackPanel VerticalAlignment="Center" Height="296">

@@ -14,7 +14,7 @@
                     <GridViewColumn DisplayMemberBinding="{Binding MedicamentIdMedicamentNavigation.MedicamentName}" Header="Препарат" Width="150"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding PurchaseCount}" Header="Количество" Width="150"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding ClientsIdClientsNavigation.ClientSurname}" Header="Клиент" Width="150"></GridViewColumn>
-                    <GridViewColumn DisplayMemberBinding="{Binding RecipeIdRecipeNavigation.RecipeDateTo}" Header="Рецепт" Width="150"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding RecipeIdRecipeNavigation.IdRecipe}" Header="Рецепт" Width="150"></GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>

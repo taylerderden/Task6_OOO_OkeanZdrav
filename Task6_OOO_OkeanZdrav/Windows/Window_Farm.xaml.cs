@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -32,8 +33,10 @@ namespace Task6_OOO_OkeanZdrav.Windows
 
             List<Medicament> medicament = CoreModel.init().Medicaments.ToList();
             ListViewMed.ItemsSource = medicament.ToList();
-            FiltrAnalog.ItemsSource = medicament;
-            medicament.Insert(0, new Medicament { MedicamentAnalog = "Все аналоги" });
+
+            FiltrAnalog.Items.Add("Все");
+            FiltrAnalog.Items.Add("Есть аналог");
+            FiltrAnalog.Items.Add("Нет аналога");
             FiltrAnalog.SelectedIndex = 0;
 
             Sort.Items.Add("По возрастанию");
@@ -42,9 +45,9 @@ namespace Task6_OOO_OkeanZdrav.Windows
             Sort.Items.Add("Против алфавита");
             Sort.SelectedIndex = 1;
 
-            List<Type> type = CoreModel.init().Types.ToList();
-            FiltrOtpusk.ItemsSource = type;
-            type.Insert(0, new Type { TypeName = "Все виды отпуска" });
+            List<DbModels.Type> types = CoreModel.init().Types.ToList();
+            FiltrOtpusk.ItemsSource = types;
+            types.Insert(0, new DbModels.Type { TypeName = "Все виды отпуска" });
             FiltrOtpusk.SelectedIndex = 0;
 
             List<Supplier> supplier = CoreModel.init().Suppliers.ToList();
@@ -56,14 +59,21 @@ namespace Task6_OOO_OkeanZdrav.Windows
 
         private void btnZakaz_Click(object sender, RoutedEventArgs e)
         {
-            Window_Zakaz WindowZakaz = new Window_Zakaz();
-            WindowZakaz.Show();
-            this.Close();
+            Medicament medicament = ListViewMed.SelectedItem as Medicament;
+            if (medicament != null)
+            {
+                Window_Zakaz WindowZakaz = new Window_Zakaz(new Purchase(), medicament.IdMedicament);
+                WindowZakaz.Show();
+                this.Close();
+            }
+            else
+                MessageBox.Show("Выбери препарат!");
+        
         }
 
         private void btnBonus_Click(object sender, RoutedEventArgs e)
         {
-            Window_Bonus windowbonus = new Window_Bonus();
+            Window_Bonus windowbonus = new Window_Bonus(new Client());
             windowbonus.Show();
             this.Close();
         }
@@ -101,7 +111,7 @@ namespace Task6_OOO_OkeanZdrav.Windows
             }
             if (FiltrOtpusk.SelectedIndex > 0)
             {
-                medicament = medicament.Where(p => p.TypeIdType == (FiltrOtpusk.SelectedItem as Type).IdType);
+                medicament = medicament.Where(p => p.TypeIdType == (FiltrOtpusk.SelectedItem as DbModels.Type).IdType);
             }
             if (FiltrPostav.SelectedIndex > 0)
             {
@@ -109,10 +119,42 @@ namespace Task6_OOO_OkeanZdrav.Windows
             }
             if (FiltrAnalog.SelectedIndex > 0)
             {
-                medicament = medicament.Where(p => p.MedicamentAnalog = FiltrAnalog.SelectedItem as Medicament); //??? я хуй знает
+                if (FiltrAnalog.SelectedIndex == 1)
+                {
+                    medicament = medicament.Where(p => p.MedicamentAnalog == "Да");
+                }
+                if (FiltrAnalog.SelectedIndex == 2)
+                {
+                    medicament = medicament.Where(p => p.MedicamentAnalog == "Нет");
+                }      
             }
 
             ListViewMed.ItemsSource = medicament.ToList();
+        }
+
+        private void SearchChange(object sender, TextChangedEventArgs e)
+        {
+            update();
+        }
+
+        private void SortChange(object sender, SelectionChangedEventArgs e)
+        {
+            update();
+        }
+
+        private void FiltrTypeChange(object sender, SelectionChangedEventArgs e)
+        {
+            update();
+        }
+
+        private void FiltrSupplierChange(object sender, SelectionChangedEventArgs e)
+        {
+            update();
+        }
+
+        private void FiltrMedicamentChange(object sender, SelectionChangedEventArgs e)
+        {
+            update();
         }
     }
 }
