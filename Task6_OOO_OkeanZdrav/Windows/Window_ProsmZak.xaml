@@ -1,0 +1,22 @@
+﻿<Window x:Class="Task6_OOO_OkeanZdrav.Windows.Window_ProsmZak"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task6_OOO_OkeanZdrav.Windows"
+        mc:Ignorable="d"
+        Title="Window_ProsmZak" Height="450" Width="800">
+    <Grid Style="{StaticResource gridBackground}">
+        <ListView Name="ListViewZak" ItemsSource="{Binding Purchase}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding PurchaseDate}" Header="Дата" Width="200"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding MedicamentIdMedicamentNavigation.MedicamentName}" Header="Препарат" Width="150"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding PurchaseCount}" Header="Количество" Width="150"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding ClientsIdClientsNavigation.ClientSurname}" Header="Клиент" Width="150"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding RecipeIdRecipeNavigation.RecipeDateTo}" Header="Рецепт" Width="150"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

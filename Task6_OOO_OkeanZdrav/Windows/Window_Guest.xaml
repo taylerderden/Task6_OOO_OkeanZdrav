@@ -1,0 +1,67 @@
+﻿<Window x:Class="Task6_OOO_OkeanZdrav.Windows.Window_Guest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task6_OOO_OkeanZdrav.Windows"
+        mc:Ignorable="d"
+        Title="Window_Guest" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Style="{StaticResource gridBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37*"/>
+            <RowDefinition Height="359*"/>
+            <RowDefinition Height="38*"/>
+        </Grid.RowDefinitions>
+        <ListView Name="ListViewMed" Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid HorizontalAlignment="Left">
+                                <Image Source="{Binding MedicamentImage, TargetNullValue={StaticResource Picture}}" Width="200" Height="100"/>
+                            </Grid>
+                            <Grid Grid.Column="1">
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="Номер партии:" FontSize="15">
+                                        <Run Text="{Binding MedicamentPart}"/>
+                                    </TextBlock>
+                                    <TextBlock Text="Поставщик:" FontSize="15">
+                                        <Run Text="{Binding SupplierIdSupplierNavigation.SupplierName}"/>
+                                    </TextBlock>
+                                    <TextBlock Text="Наличие аналога:" FontSize="15">
+                                        <Run Text="{Binding MedicamentAnalog}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+                        <Grid Grid.Row="1" Margin="10">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="Наименование: " FontSize="20">
+                                    <Run Text="{Binding MedicamentName}"/>
+                                </TextBlock>
+                                <TextBlock Text="Цена: " FontSize="20">
+                                    <Run Text="{Binding MedicamentCost}"/>
+                                </TextBlock>
+                                <TextBlock Text="Количество: " FontSize="20">
+                                    <Run Text="{Binding MedicamentCount}"/>
+                                </TextBlock>
+                                <TextBlock Text="Отпуск:" FontSize="20">
+                                    <Run Text="{Binding TypeIdTypeNavigation.TypeName}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Window>
